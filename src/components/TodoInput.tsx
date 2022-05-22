@@ -4,9 +4,10 @@ import Icon from 'react-native-vector-icons/Feather';
 
 interface TodoInputProps {
 	addTask: (task: string) => void;
+	inputRef: React.RefObject<TextInput>;
 }
 
-export function TodoInput({ addTask }: TodoInputProps) {
+export function TodoInput({ addTask, inputRef }: TodoInputProps) {
 	const [task, setTask] = useState('');
 
 	function handleAddNewTask() {
@@ -28,6 +29,7 @@ export function TodoInput({ addTask }: TodoInputProps) {
 				onChangeText={setTask}
 				onSubmitEditing={handleAddNewTask}
 				value={task}
+				ref={inputRef}
 			/>
 			<TouchableOpacity
 				testID="add-new-task-button"
